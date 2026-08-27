@@ -103,13 +103,16 @@ export default async function HomePage() {
               How it works
             </Link>
             <RefreshButton />
-            <span
-              className="hidden sm:block text-[12px] text-on-surface-variant flex items-center gap-1.5 px-2 py-1 rounded border border-outline-variant bg-surface-container"
-              style={{ fontFamily: 'var(--font-jbm, monospace)', display: 'inline-flex' }}
+            <a
+              href="https://t.me/Index_TrackerBot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex text-[12px] text-on-surface-variant hover:text-on-surface items-center gap-1.5 px-2 py-1 rounded border border-outline-variant bg-surface-container hover:border-outline transition-colors"
+              style={{ fontFamily: 'var(--font-jbm, monospace)' }}
             >
               <TelegramIcon className="w-3.5 h-3.5 shrink-0" style={{ color: '#2AABEE' }} />
               @Index_TrackerBot
-            </span>
+            </a>
           </div>
         </div>
       </nav>
