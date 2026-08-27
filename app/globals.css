@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0f131d;
+  --color-surface: #0f131d;
+  --color-surface-dim: #0f131d;
+  --color-surface-container-lowest: #0a0e18;
+  --color-surface-container-low: #171b26;
+  --color-surface-container: #1c1f2a;
+  --color-surface-container-high: #262a35;
+  --color-surface-container-highest: #313540;
+  --color-surface-variant: #313540;
+  --color-on-surface: #dfe2f1;
+  --color-on-surface-variant: #bbcabf;
+  --color-on-background: #dfe2f1;
+  --color-primary: #4edea3;
+  --color-on-primary: #003824;
+  --color-primary-container: #10b981;
+  --color-on-primary-container: #00422b;
+  --color-secondary: #ffb95f;
+  --color-on-secondary: #472a00;
+  --color-secondary-container: #ee9800;
+  --color-on-secondary-container: #5b3800;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-outline: #86948a;
+  --color-outline-variant: #3c4a42;
+  --color-inverse-surface: #dfe2f1;
+  --color-inverse-on-surface: #2c303b;
+}
+
+body {
+  background-color: #0b0f19;
+  color: #dfe2f1;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.glow-red   { box-shadow: 0 0 12px rgba(239, 68, 68, 0.35); }
+.glow-amber { box-shadow: 0 0 12px rgba(245, 158, 11, 0.35); }
+.glow-green { box-shadow: 0 0 12px rgba(16, 185, 129, 0.35); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0f131d; }
+::-webkit-scrollbar-thumb { background: #313540; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3c4a42; }
