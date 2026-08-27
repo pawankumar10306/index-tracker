@@ -6,7 +6,7 @@ import type { SignalResult } from '@/types';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-export const maxDuration = 10;
+export const maxDuration = 30;
 
 const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN ?? '');
 
@@ -36,7 +36,7 @@ bot.command('status', async (ctx) => {
   try {
     const results = await Promise.allSettled(
       INDEX_CONFIGS.map((config) =>
-        fetchIndexData(config.ticker, 8000)
+        fetchIndexData(config.ticker, 12000)
       )
     );
 
@@ -81,12 +81,19 @@ bot.on('message', (ctx) =>
   ctx.reply('Unknown command. Try /help to see available commands.')
 );
 
+export async function GET(): Promise<Response> {
+  return new Response(
+    JSON.stringify({ hasToken: !!process.env.TELEGRAM_BOT_TOKEN, hasChatId: !!process.env.TELEGRAM_CHAT_ID }),
+    { status: 200, headers: { 'Content-Type': 'application/json' } }
+  );
+}
+
 export async function POST(req: Request): Promise<Response> {
   try {
     const update = await req.json();
     await bot.handleUpdate(update);
-  } catch {
-    // Swallow all errors — never return non-200 to Telegram (causes retry storms)
+  } catch (err) {
+    console.error('[webhook] handleUpdate error:', err);
   }
   return new Response('OK', { status: 200 });
 }
