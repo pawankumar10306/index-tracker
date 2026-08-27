@@ -91,9 +91,12 @@ export async function GET(): Promise<Response> {
 export async function POST(req: Request): Promise<Response> {
   try {
     const update = await req.json();
+    console.log('[webhook] update received:', JSON.stringify(update).slice(0, 200));
+    await bot.init();
     await bot.handleUpdate(update);
+    console.log('[webhook] update handled successfully');
   } catch (err) {
-    console.error('[webhook] handleUpdate error:', err);
+    console.error('[webhook] error:', err);
   }
   return new Response('OK', { status: 200 });
 }
